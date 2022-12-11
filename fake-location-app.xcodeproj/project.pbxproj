@@ -15,7 +15,6 @@
 		749B75942931A72A0058F816 /* fake_location_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749B75932931A72A0058F816 /* fake_location_appUITestsLaunchTests.swift */; };
 		749B75A72931A7950058F816 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749B75A02931A7930058F816 /* LocationViewModel.swift */; };
 		749B75A82931A7950058F816 /* LocationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749B75A12931A7930058F816 /* LocationSender.swift */; };
-		749B75A92931A7950058F816 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749B75A22931A7940058F816 /* ContentView.swift */; };
 		749B75AC2931A7950058F816 /* UIMapAddressGetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749B75A52931A7950058F816 /* UIMapAddressGetView.swift */; };
 		749B75AD2931A7950058F816 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749B75A62931A7950058F816 /* UserProfile.swift */; };
 		749B75B02931A9970058F816 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 749B75AF2931A9970058F816 /* FirebaseAppCheck */; };
@@ -24,6 +23,7 @@
 		749B75B62931AA450058F816 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 749B75B52931AA440058F816 /* GoogleService-Info.plist */; };
 		749B75B92931AB960058F816 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 749B75B82931AB960058F816 /* FirebaseFirestoreCombine-Community */; };
 		749B75BB2931AB960058F816 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 749B75BA2931AB960058F816 /* FirebaseFirestoreSwift */; };
+		74DF8DC329457DAA00A0A0C5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DF8DC229457DAA00A0A0C5 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,11 +55,11 @@
 		749B75932931A72A0058F816 /* fake_location_appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fake_location_appUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		749B75A02931A7930058F816 /* LocationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		749B75A12931A7930058F816 /* LocationSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSender.swift; sourceTree = "<group>"; };
-		749B75A22931A7940058F816 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = "../../iOS/fake-location/fake-location/ContentView.swift"; sourceTree = "<group>"; };
 		749B75A42931A7950058F816 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		749B75A52931A7950058F816 /* UIMapAddressGetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIMapAddressGetView.swift; sourceTree = "<group>"; };
 		749B75A62931A7950058F816 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		749B75B52931AA440058F816 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		74DF8DC229457DAA00A0A0C5 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +117,7 @@
 		749B75752931A7260058F816 /* fake-location-app */ = {
 			isa = PBXGroup;
 			children = (
-				749B75A22931A7940058F816 /* ContentView.swift */,
+				74DF8DC229457DAA00A0A0C5 /* ContentView.swift */,
 				749B75A42931A7950058F816 /* Info.plist */,
 				749B75A12931A7930058F816 /* LocationSender.swift */,
 				749B75A02931A7930058F816 /* LocationViewModel.swift */,
@@ -326,8 +326,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				749B75A92931A7950058F816 /* ContentView.swift in Sources */,
 				749B75A82931A7950058F816 /* LocationSender.swift in Sources */,
+				74DF8DC329457DAA00A0A0C5 /* ContentView.swift in Sources */,
 				749B75AD2931A7950058F816 /* UserProfile.swift in Sources */,
 				749B75A72931A7950058F816 /* LocationViewModel.swift in Sources */,
 				749B75772931A7260058F816 /* fake_location_appApp.swift in Sources */,
@@ -553,11 +553,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 523M9RF33S;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.psytwo.fake-location-appTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.fake-location-appTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -573,11 +573,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 523M9RF33S;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.psytwo.fake-location-appTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.fake-location-appTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -592,10 +592,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 523M9RF33S;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.psytwo.fake-location-appUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.fake-location-appUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -610,10 +610,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 523M9RF33S;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.psytwo.fake-location-appUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.fake-location-appUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;

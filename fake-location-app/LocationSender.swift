@@ -16,10 +16,12 @@ class LocationSender {
         id = Auth.auth().currentUser?.uid ?? UUID().uuidString
     }
 
-    func sendLocation(location: CLLocation) {
+    func sendLocation(location: CLLocation, timestamp: Date? = nil) {
         let dataStore = Firestore.firestore()
+        let _timestamp = timestamp ?? location.timestamp
+
         dataStore.collection("locations").document(id).setData([
-            "timestamp": location.timestamp,
+            "timestamp": _timestamp,
             "coordinate": [
                 "latitude": location.coordinate.latitude,
                 "longitude": location.coordinate.longitude,
