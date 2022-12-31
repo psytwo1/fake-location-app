@@ -13,6 +13,8 @@ struct ContentView: View {
     @State var userTrackingMode = MKUserTrackingMode.follow
     @State var locationButton = "location"
     //    @State var isFake = false
+    @EnvironmentObject var appDelegate: AppDelegate
+    //    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @ObservedObject var locationViewModel = LocationViewModel()
 
     var body: some View {
@@ -20,7 +22,8 @@ struct ContentView: View {
             ZStack(alignment: .topTrailing) {
                 UIMapAddressGetView(
                     userTrackingMode: $userTrackingMode, locationButton: $locationButton,
-                    locationViewModel: locationViewModel
+                    locationViewModel: LocationViewModel(
+                        locationManager: appDelegate.locationManager)
                 )
                 HStack {
                     Spacer()

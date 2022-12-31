@@ -11,28 +11,29 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var authorizationStatus: CLAuthorizationStatus
     @Published var lastSeenLocation: CLLocation?
     @Published var userProfile = UserProfile()
-
     //    var fakeLocation :CLLocation?
     //    var isFake = false
     let locationSender = LocationSender()
 
-    private let locationManager: CLLocationManager
+    private var locationManager: CLLocationManager
 
-    override init() {
-        locationManager = CLLocationManager()
+    init(locationManager: CLLocationManager = CLLocationManager()) {
+        self.locationManager = locationManager
         authorizationStatus = locationManager.authorizationStatus
-
         super.init()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = 100
-        locationManager.allowsBackgroundLocationUpdates = true  // バックグラウンド実行中も座標取得する場合、trueにする
-        locationManager.pausesLocationUpdatesAutomatically = false
+
+        //        locationManager = appDelegate.locationManager
+
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.distanceFilter = 100
+        self.locationManager.allowsBackgroundLocationUpdates = true  // バックグラウンド実行中も座標取得する場合、trueにする
+        self.locationManager.pausesLocationUpdatesAutomatically = false
         switch authorizationStatus {
         case .notDetermined:
             requestPermission()
         case .authorizedWhenInUse, .authorizedAlways:
-            locationManager.startUpdatingLocation()
+            self.locationManager.startUpdatingLocation()
         default:
             break
         }

@@ -39,6 +39,11 @@ struct UIMapAddressGetView: UIViewRepresentable {
         panGesture.delegate = context.coordinator
         mapView.addGestureRecognizer(panGesture)
 
+        guard let currentLocation = locationViewModel.getRealLocation() else {
+            return mapView
+        }
+        mapView.setCenter(currentLocation.coordinate, animated: true)
+
         guard let coordinate = locationViewModel.userProfile.fakeLocation?.coordinate else {
             return mapView
         }
