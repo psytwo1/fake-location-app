@@ -2,7 +2,7 @@
 //  UIMapAddressGetView.swift
 //  fake-location
 //
-//  Created by Masayuki Saito on 2022/11/16.
+//  Created by psytwo1 on 2022/11/16.
 //
 
 import MapKit

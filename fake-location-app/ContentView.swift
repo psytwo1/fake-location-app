@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  fake-location
 //
-//  Created by Masayuki Saito on 2022/11/15.
+//  Created by psytwo1 on 2022/11/15.
 //
 
 import MapKit

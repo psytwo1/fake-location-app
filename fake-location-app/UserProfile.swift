@@ -2,7 +2,7 @@
 //  UserProfile.swift
 //  fake-location
 //
-//  Created by Masayuki Saito on 2022/11/25.
+//  Created by psytwo1 on 2022/11/25.
 //
 
 import CoreLocation

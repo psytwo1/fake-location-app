@@ -2,7 +2,7 @@
 //  fake_location_appTests.swift
 //  fake-location-appTests
 //
-//  Created by Masayuki Saito on 2022/11/26.
+//  Created by psytwo1 on 2022/11/26.
 //
 
 import XCTest
