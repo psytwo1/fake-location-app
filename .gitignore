@@ -94,3 +94,6 @@ iOSInjectionProject/
 
 # key
 GoogleService-Info.plist
+
+# .env
+.env

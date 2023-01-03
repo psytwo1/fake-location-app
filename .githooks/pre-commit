@@ -5,5 +5,6 @@
 # git config --local core.hooksPath .githooks
 #
 
-sed -i "" -e 's/DEVELOPMENT_TEAM = 523M9RF33S/DEVELOPMENT_TEAM = ""/' fake-location-app.xcodeproj/project.pbxproj
-sed -i "" -e 's/net.psytwo.fake-location-app/com.example.fake-location-app/' fake-location-app.xcodeproj/project.pbxproj
+source .env
+sed -i "" -e "s/DEVELOPMENT_TEAM = ${DEVELOPMENT_TEAM}/DEVELOPMENT_TEAM = \"\"/" fake-location-app.xcodeproj/project.pbxproj
+sed -i "" -e "s/${BUNDLE_ID}/com.example.fake-location-app/" fake-location-app.xcodeproj/project.pbxproj
