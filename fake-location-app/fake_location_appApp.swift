@@ -14,10 +14,9 @@ class AppDelegate: NSObject, UIApplicationDelegate, ObservableObject {
     //    @Published var locationViewModel: LocationViewModel
 
     func application(
-        _ application: UIApplication,
+        _: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
     ) -> Bool {
-
         #if DEBUG
             let providerFactory = AppCheckDebugProviderFactory()
             AppCheck.setAppCheckProviderFactory(providerFactory)
@@ -32,24 +31,24 @@ class AppDelegate: NSObject, UIApplicationDelegate, ObservableObject {
         return true
     }
 
-    func applicationDidEnterBackground(_ application: UIApplication) {
+    func applicationDidEnterBackground(_: UIApplication) {
         // バックグラウンドに入る前
         locationManager.startMonitoringSignificantLocationChanges()
     }
 
-    func applicationWillEnterForeground(_ application: UIApplication) {
+    func applicationWillEnterForeground(_: UIApplication) {
         // フォアグランド
         locationManager.startMonitoringSignificantLocationChanges()
     }
 
-    func applicationWillTerminate(_ application: UIApplication) {
+    func applicationWillTerminate(_: UIApplication) {
         // アプリが終了（キル）される前
         locationManager.startMonitoringSignificantLocationChanges()
     }
 }
 
 @main
-struct fake_location_appApp: App {
+struct FakeLocationAppApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {

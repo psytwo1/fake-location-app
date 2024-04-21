@@ -23,7 +23,8 @@ class UserProfile: ObservableObject {
             }
             guard
                 let location = try? NSKeyedArchiver.archivedData(
-                    withRootObject: loc, requiringSecureCoding: true)
+                    withRootObject: loc, requiringSecureCoding: true
+                )
             else {
                 UserDefaults.standard.removeObject(forKey: "fakeLocation")
                 return

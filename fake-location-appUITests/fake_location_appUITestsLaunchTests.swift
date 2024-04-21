@@ -7,8 +7,7 @@
 
 import XCTest
 
-final class fake_location_appUITestsLaunchTests: XCTestCase {
-
+final class FakeLocationAppUITestsLaunchTests: XCTestCase {
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
     }

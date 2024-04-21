@@ -54,8 +54,7 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         }
     }
 
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-
+    func locationManager(_: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         var tmpLocation: CLLocation?
 
         if userProfile.isFake {
@@ -84,5 +83,4 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     func getRealLocation() -> CLLocation? {
         return locationManager.location
     }
-
 }
