@@ -23,8 +23,7 @@ struct ContentView: View {
                 UIMapAddressGetView(
                     mapView: mapView,
                     userTrackingMode: $userTrackingMode, locationButton: $locationButton,
-                    locationViewModel: LocationViewModel(
-                        locationManager: appDelegate.locationManager)
+                    locationViewModel: locationViewModel
                 )
                 .onAppear {
                     var location = mapView.userLocation.coordinate
@@ -41,7 +40,6 @@ struct ContentView: View {
                     Spacer()
                     VStack(alignment: .trailing) {
                         Button(
-                            LocalizedStringKey("ja-jp"),
                             action: {
                                 switch userTrackingMode {
                                 case .follow:
@@ -56,12 +54,13 @@ struct ContentView: View {
                                 default:
                                     break
                                 }
-                            })
-                        Image(systemName: locationButton)
-                            .padding(15)
-                            .background(Color(UIColor.systemBackground))
-                            .foregroundColor(Color(UIColor.systemBlue))
-                            .cornerRadius(10)
+                            }) {
+                                Image(systemName: locationButton)
+                                    .padding(15)
+                                    .background(Color(UIColor.systemBackground))
+                                    .foregroundColor(Color(UIColor.systemBlue))
+                                    .cornerRadius(10)
+                            }
                     }
                     .padding(EdgeInsets(top: 60.0, leading: 10, bottom: 10, trailing: 5))
                 }
