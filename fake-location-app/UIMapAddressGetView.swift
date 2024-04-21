@@ -53,31 +53,38 @@ struct UIMapAddressGetView: UIViewRepresentable {
         return mapView
     }
 
-    func updateUIView(_ uiView: MKMapView, context: Self.Context) {
+    func updateUIView(_: MKMapView, context _: Self.Context) {
+        var location = mapView.userLocation.coordinate
+        if locationViewModel.userProfile.isFake {
+            if let fakeLocation = locationViewModel.userProfile.fakeLocation {
+                location = CLLocationCoordinate2D(
+                    latitude: fakeLocation.coordinate.latitude,
+                    longitude: fakeLocation.coordinate.longitude)
+            }
+        }
         mapView.setUserTrackingMode(userTrackingMode, animated: true)
         switch userTrackingMode {
         case .follow:
             mapView.camera.heading = 0
-            mapView.setCenter(mapView.userLocation.coordinate, animated: true)
-            break
+            mapView.setCenter(location, animated: true)
         case .followWithHeading:
-            mapView.setCenter(mapView.userLocation.coordinate, animated: true)
-            break
+            mapView.setCenter(location, animated: true)
         case .none:
             break
         default:
             break
-
         }
-
     }
+
     func makeCoordinator() -> Coordinator {
         Coordinator(
             self, mapView: $mapView, userTrackingMode: $userTrackingMode,
             locationButton: $locationButton,
-            locationViewModel: locationViewModel)
+            locationViewModel: locationViewModel
+        )
     }
 }
+
 extension UIMapAddressGetView {
     class Coordinator: NSObject, UIGestureRecognizerDelegate {
         var control: UIMapAddressGetView
@@ -100,8 +107,8 @@ extension UIMapAddressGetView {
         }
 
         func gestureRecognizer(
-            _ gestureRecognizer: UIGestureRecognizer,
-            shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer
+            _: UIGestureRecognizer,
+            shouldRecognizeSimultaneouslyWith _: UIGestureRecognizer
         ) -> Bool {
             return true
         }
@@ -120,22 +127,27 @@ extension UIMapAddressGetView {
             mapView.addAnnotation(tapAnotation)
 
             locationViewModel.userProfile.fakeLocation = CLLocation(
-                latitude: mapCoordinate.latitude, longitude: mapCoordinate.longitude)
-
+                latitude: mapCoordinate.latitude, longitude: mapCoordinate.longitude
+            )
         }
 
         @objc func longTapped(gesture: UILongPressGestureRecognizer) {
-
             let viewPoint = gesture.location(in: mapView)
             let mapCoordinate: CLLocationCoordinate2D = mapView.convert(
-                viewPoint, toCoordinateFrom: mapView)
+                viewPoint, toCoordinateFrom: mapView
+            )
             addAnotation(coordinate: mapCoordinate)
+
+            if locationViewModel.userProfile.isFake {
+                locationViewModel.locationSender.sendLocation(
+                    location: CLLocation(
+                        latitude: mapCoordinate.latitude, longitude: mapCoordinate.longitude))
+            }
         }
 
-        @objc func handlePanGesture(gesture: UIPanGestureRecognizer) {
+        @objc func handlePanGesture(gesture _: UIPanGestureRecognizer) {
             userTrackingMode = .none
             locationButton = "location"
-
         }
     }
 }

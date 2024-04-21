@@ -16,39 +16,51 @@ struct ContentView: View {
     @EnvironmentObject var appDelegate: AppDelegate
     //    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @ObservedObject var locationViewModel = LocationViewModel()
-
+    var mapView = MKMapView()
     var body: some View {
         VStack {
             ZStack(alignment: .topTrailing) {
                 UIMapAddressGetView(
+                    mapView: mapView,
                     userTrackingMode: $userTrackingMode, locationButton: $locationButton,
-                    locationViewModel: LocationViewModel(
-                        locationManager: appDelegate.locationManager)
+                    locationViewModel: locationViewModel
                 )
+                .onAppear {
+                    var location = mapView.userLocation.coordinate
+                    if locationViewModel.userProfile.isFake {
+                        if let fakeLocation = locationViewModel.userProfile.fakeLocation {
+                            location = CLLocationCoordinate2D(
+                                latitude: fakeLocation.coordinate.latitude,
+                                longitude: fakeLocation.coordinate.longitude)
+                        }
+                    }
+                    mapView.setCenter(location, animated: true)
+                }
                 HStack {
                     Spacer()
                     VStack(alignment: .trailing) {
-                        Button(action: {
-                            switch userTrackingMode {
-                            case .follow:
-                                userTrackingMode = .followWithHeading
-                                locationButton = "location.north.line.fill"
-                            case .none:
-                                userTrackingMode = .follow
-                                locationButton = "location.fill"
-                            case .followWithHeading:
-                                userTrackingMode = .follow
-                                locationButton = "location.fill"
-                            default:
-                                break
+                        Button(
+                            action: {
+                                switch userTrackingMode {
+                                case .follow:
+                                    userTrackingMode = .followWithHeading
+                                    locationButton = "location.north.line.fill"
+                                case .none:
+                                    userTrackingMode = .follow
+                                    locationButton = "location.fill"
+                                case .followWithHeading:
+                                    userTrackingMode = .follow
+                                    locationButton = "location.fill"
+                                default:
+                                    break
+                                }
+                            }) {
+                                Image(systemName: locationButton)
+                                    .padding(15)
+                                    .background(Color(UIColor.systemBackground))
+                                    .foregroundColor(Color(UIColor.systemBlue))
+                                    .cornerRadius(10)
                             }
-                        }) {
-                            Image(systemName: locationButton)
-                                .padding(15)
-                                .background(Color(UIColor.systemBackground))
-                                .foregroundColor(Color(UIColor.systemBlue))
-                                .cornerRadius(10)
-                        }
                     }
                     .padding(EdgeInsets(top: 60.0, leading: 10, bottom: 10, trailing: 5))
                 }
@@ -68,7 +80,8 @@ struct ContentView: View {
                                     return
                                 }
                                 locationViewModel.locationSender.sendLocation(
-                                    location: location, timestamp: Date())
+                                    location: location, timestamp: Date()
+                                )
                             } else {
                                 guard let location = locationViewModel.getRealLocation() else {
                                     return

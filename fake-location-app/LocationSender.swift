@@ -18,10 +18,10 @@ class LocationSender {
 
     func sendLocation(location: CLLocation, timestamp: Date? = nil) {
         let dataStore = Firestore.firestore()
-        let _timestamp = timestamp ?? location.timestamp
+        let vTimestamp = timestamp ?? location.timestamp
 
         dataStore.collection("locations").document(id).setData([
-            "timestamp": _timestamp,
+            "timestamp": vTimestamp,
             "coordinate": [
                 "latitude": location.coordinate.latitude,
                 "longitude": location.coordinate.longitude,
