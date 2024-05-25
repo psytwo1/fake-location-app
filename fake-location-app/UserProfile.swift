@@ -35,10 +35,9 @@ class UserProfile: ObservableObject {
 
     init() {
         isFake = UserDefaults.standard.bool(forKey: "isFake")
-        if let data = UserDefaults.standard.object(forKey: "fakeLocation") {
+        if let data: Data = UserDefaults.standard.object(forKey: "fakeLocation") as? Data {
             if let location =
-                (try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data as! Data))
-                as? CLLocation?
+                (try? NSKeyedUnarchiver.unarchivedObject(ofClass: CLLocation.self, from: data))
             {
                 fakeLocation = location
             } else {

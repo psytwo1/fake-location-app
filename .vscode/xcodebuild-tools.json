@@ -1,0 +1,21 @@
+{
+  "variables": {
+    "SDK_VERSION": "17.4"
+  },
+  "sdk": "iphonesimulator${SDK_VERSION}",
+  "workspace": ".",
+  "scheme": "fake-location-app",
+  "debugConfigurations": [
+    {
+      "name": "Simulator",
+      "cwd": "${buildPath}",
+      "program": "ios-sim",
+      "args": [
+        "launch",
+        "fake-location-app.app/",
+        "--devicetypeid",
+        "com.apple.CoreSimulator.SimDeviceType.iPhone-14, ${SDK_VERSION}"
+      ]
+    }
+  ]
+}

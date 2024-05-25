@@ -31,7 +31,8 @@ struct ContentView: View {
                         if let fakeLocation = locationViewModel.userProfile.fakeLocation {
                             location = CLLocationCoordinate2D(
                                 latitude: fakeLocation.coordinate.latitude,
-                                longitude: fakeLocation.coordinate.longitude)
+                                longitude: fakeLocation.coordinate.longitude
+                            )
                         }
                     }
                     mapView.setCenter(location, animated: true)
@@ -54,13 +55,15 @@ struct ContentView: View {
                                 default:
                                     break
                                 }
-                            }) {
+                            },
+                            label: {
                                 Image(systemName: locationButton)
                                     .padding(15)
                                     .background(Color(UIColor.systemBackground))
                                     .foregroundColor(Color(UIColor.systemBlue))
                                     .cornerRadius(10)
                             }
+                        )
                     }
                     .padding(EdgeInsets(top: 60.0, leading: 10, bottom: 10, trailing: 5))
                 }

@@ -5,6 +5,7 @@
 # git config --local core.hooksPath .githooks
 #
 
-source .env
+# shellcheck disable=SC1091
+. .env
 sed -i "" -e "s/DEVELOPMENT_TEAM = \"\"/DEVELOPMENT_TEAM = ${DEVELOPMENT_TEAM}/" fake-location-app.xcodeproj/project.pbxproj
 sed -i "" -e "s/com.example.fake-location-app/${BUNDLE_ID}/" fake-location-app.xcodeproj/project.pbxproj
