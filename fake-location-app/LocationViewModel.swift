@@ -29,6 +29,7 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         self.locationManager.distanceFilter = 100
         self.locationManager.allowsBackgroundLocationUpdates = true  // バックグラウンド実行中も座標取得する場合、trueにする
         self.locationManager.pausesLocationUpdatesAutomatically = false
+        self.locationManager.showsBackgroundLocationIndicator = true
         switch authorizationStatus {
         case .notDetermined:
             requestPermission()
